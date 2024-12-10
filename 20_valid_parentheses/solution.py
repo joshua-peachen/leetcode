@@ -9,6 +9,8 @@ class Solution:
             if letter in ('(', '[', '{'):
                 stack.add(letter)
             else:
+                if stack.is_empty():
+                    return False
                 compare_object = stack.pop()
                 if (
                         (letter == '}' and compare_object != '{') or
@@ -16,7 +18,10 @@ class Solution:
                         (letter == ')' and compare_object != '(')
                 ):
                     return False
-        return True
+        if stack.is_empty():
+            return True
+        else:
+            return False
 
 class Stack:
     def __init__(self):
@@ -27,6 +32,9 @@ class Stack:
 
     def pop(self) -> str:
         return self.queue.pop()
+
+    def is_empty(self) -> bool:
+        return len(self.queue) == 0
 
 if __name__ == '__main__':
     test_cases = [

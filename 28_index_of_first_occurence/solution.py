@@ -1,6 +1,6 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        for ind in range(len(haystack) - len(needle)):
+        for ind in range(len(haystack)):
             substr = haystack[ind:ind+len(needle)]
             if substr == needle:
                 return ind
